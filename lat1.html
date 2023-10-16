@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: yellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .wave-text {
+            font-family: Arial, sans-serif; /* Font yang digunakan */
+            font-size: 36px; /* Ukuran font */
+            color: black; /* Warna teks */
+            position: relative;
+            display: inline-block;
+        }
+
+        .wave-text::before {
+            content: "Hello World"; /* Teks yang ditampilkan */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            color: white; /* Warna latar belakang teks */
+        }
+
+        .wave-text::after {
+            content: "Hello World"; /* Teks yang ditampilkan */
+            position: absolute;
+            top: 2px; /* Jarak dari teks utama */
+            left: 2px; /* Jarak dari teks utama */
+            z-index: -2;
+            color: black; /* Warna gelombang */
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(2px, -1px); }
+            50% { transform: translate(-1px, 2px); }
+            75% { transform: translate(1px, -1px); }
+        }
+
+        .wave-text::before, .wave-text::after {
+            animation: wave 2s linear infinite;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-text">Hello World</div>
+</body>
+</html>
